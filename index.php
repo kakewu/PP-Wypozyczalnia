@@ -106,9 +106,102 @@ $samochody = array(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wypożyczalnia samochodów</title>
-    <style>
-        .dostepny { color: green; }
-        .niedostepny { color: red; }
+      <style>
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .samochod {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .dostepny {
+            background-color: #c8e6c9;
+        }
+
+        .niedostepny {
+            background-color: #ffcdd2;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .wynik-wypozyczenia {
+            padding: 15px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .wynik-wypozyczenia h2 {
+            margin-top: 0;
+        }
+
+        .wynik-wypozyczenia p {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -175,13 +268,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($wybranyKlient) {
+        echo "<div class='wynik-wypozyczenia'>";
         echo "<h2>Wynik wypożyczenia:</h2>";
         wypozyczSamochod($wybranyKlient, $wybranySegment, $wybranyRodzajPaliwa, $wybraneDni, $samochody);
+        echo "</div>";
     } else {
+        echo "<div class='wynik-wypozyczenia'>";
         echo "<p>Nie znaleziono wybranego klienta.</p>";
+        echo "</div>";
     }
+	
 }
-?>
+    ?>
+
 
 </body>
 </html>
